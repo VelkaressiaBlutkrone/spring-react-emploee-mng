@@ -11,7 +11,7 @@ import lombok.Getter;
 @Getter
 @Builder
 public class ErrorResponse {
-    private LocalDateTime timestamp = LocalDateTime.now();
+    private final LocalDateTime timestamp = LocalDateTime.now();
     private int status;
     private String error;
     private String message;
