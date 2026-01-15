@@ -1,5 +1,5 @@
 import { BrowserRouter } from 'react-router-dom'
-import { ReactNode } from 'react'
+import type { ReactNode } from 'react'
 
 interface RouterProviderProps {
   children: ReactNode

@@ -23,6 +23,6 @@ export interface ImportMetaEnv {
   readonly VITE_ENV: string
 }
 
-interface ImportMeta {
+export interface ImportMeta {
   readonly env: ImportMetaEnv
 }

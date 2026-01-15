@@ -3,7 +3,6 @@ package com.example.eme.domain.controller;
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,7 +21,7 @@ import lombok.RequiredArgsConstructor;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/employees")
-@CrossOrigin(origins = "http://localhost:5173") // 프론트엔드 포트 허용 (CORS)
+// 전역 CORS 설정을 사용하므로 개별 @CrossOrigin 제거
 public class EmployeeController {
 
     private final EmployeeService employeeService;
