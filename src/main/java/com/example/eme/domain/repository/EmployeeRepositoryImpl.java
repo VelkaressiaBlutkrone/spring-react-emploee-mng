@@ -1,7 +1,7 @@
 package com.example.eme.domain.repository;
 
-import static com.example.eme.domain.entity.QEmployee.employee;
 import static com.example.eme.domain.entity.QDepartment.department;
+import static com.example.eme.domain.entity.QEmployee.employee;
 
 import java.util.List;
 

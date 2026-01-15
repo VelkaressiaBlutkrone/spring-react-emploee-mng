@@ -11,6 +11,7 @@ import com.example.eme.domain.entity.Department;
 import com.example.eme.domain.entity.Employee;
 import com.example.eme.domain.repository.DepartmentRepository;
 import com.example.eme.domain.repository.EmployeeRepository;
+import com.example.eme.global.exception.ResourceNotFoundException;
 
 import lombok.RequiredArgsConstructor;
 
@@ -31,7 +32,7 @@ public class EmployeeService {
     @Transactional
     public Long createEmployee(EmployeeRequest request) {
         Department department = departmentRepository.findById(request.getDepartmentId())
-                .orElseThrow(() -> new IllegalArgumentException("부서를 찾을 수 없습니다."));
+                .orElseThrow(() -> new ResourceNotFoundException("부서를 찾을 수 없습니다."));
 
         Employee employee = Employee.builder()
                 .name(request.getName())
@@ -47,10 +48,10 @@ public class EmployeeService {
     @Transactional
     public void updateEmployee(Long id, EmployeeRequest request) {
         Employee employee = employeeRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("직원을 찾을 수 없습니다."));
-        
+                .orElseThrow(() -> new ResourceNotFoundException("직원을 찾을 수 없습니다."));
+
         Department department = departmentRepository.findById(request.getDepartmentId())
-                .orElseThrow(() -> new IllegalArgumentException("부서를 찾을 수 없습니다."));
+                .orElseThrow(() -> new ResourceNotFoundException("부서를 찾을 수 없습니다."));
 
         employee.updateInfo(request.getName(), request.getRole(), department);
     }
@@ -59,7 +60,7 @@ public class EmployeeService {
     @Transactional
     public void deleteEmployee(Long id) {
         Employee employee = employeeRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("직원을 찾을 수 없습니다."));
+                .orElseThrow(() -> new ResourceNotFoundException("직원을 찾을 수 없습니다."));
         employeeRepository.delete(employee);
     }
 }
